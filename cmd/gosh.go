@@ -68,6 +68,7 @@ func exitFn(arguments []string) {
 func echoFn(arguments []string) {
 	if len(arguments) < 1 {
 		fmt.Fprintf(os.Stderr, "Not enough arguments usage: echo <message>\n")
+		return
 	}
 	statement := strings.Join(arguments[0:], " ")
 	fmt.Println(statement)
@@ -76,11 +77,12 @@ func echoFn(arguments []string) {
 func typeFn(arguments []string) {
 	if len(arguments) < 1 {
 		fmt.Fprintf(os.Stderr, "Not enough arguments usage: type <command>\n")
+		return
 	}
 
 	_, isBuiltIn := builtInCommands[arguments[0]]
 	if isBuiltIn {
-		fmt.Fprintf(os.Stdout, "%s is a shell builtin\n", arguments[0])
+		fmt.Fprintf(os.Stdout, "%s is a gosh builtin\n", arguments[0])
 		return
 	}
 
@@ -111,7 +113,7 @@ func cdFn(arguments []string) {
 		os.Exit(1)
 	}
 
-	if arguments[0] == "~" {
+	if len(arguments) < 1 || arguments[0] == "~" {
 		err = os.Chdir(home)
 	} else {
 		err = os.Chdir(arguments[0])
