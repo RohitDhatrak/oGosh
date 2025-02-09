@@ -25,9 +25,11 @@ You can also run external commands that you have added to your path.
 3. mkdir [dir] - creates a new directory
 4. clear - clears the console
 
-## Improvements
+## Future scope of work
 1. Support for piping commands (echo "Hello" | wc)
 2. I/O redirection (echo "Hello" > file.txt)
 3. Environment variable expansion using $ (echo $ENV)
 4. Export built-in command (export ENV=value)
 5. Background processes using & (echo "Hello" &)
+6. Command history (up/down arrows)
+7. Tab completion
