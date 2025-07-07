@@ -1,4 +1,4 @@
-# gosh
+# oGosh
 
 ## Steps to Run Locally
 
